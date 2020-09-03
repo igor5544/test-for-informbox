@@ -1,0 +1,133 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.colors-table {
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.colors-table__caption-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: c;
+  max-width: 640px;
+  width: 100%;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.colors-table__title {
+  margin: 0;
+}
+
+.colors-table__reset {
+  position: relative;
+  background: none;
+  border: none;
+  color: #888888;
+  padding: 5px 10px 7px 30px;
+  background-repeat: no-repeat;
+  background-position: 10%;
+}
+
+.colors-table__reset-ico {
+  position: absolute;
+  left: 3px;
+  top: 30%;
+  width: 40px;
+  height: 30px;
+  stroke: #888888;
+}
+
+.colors-table__reset--active {
+  color: #4d9eff;
+  cursor: pointer;
+}
+
+.colors-table__reset--active .colors-table__reset-ico {
+  stroke: #4d9eff;
+}
+
+.colors-table__reset--active:hover {
+  opacity: 0.8;
+}
+
+.colors-table__reset--active:active {
+  opacity: 0.6;
+}
+
+.colors-table__check-list {
+  text-transform: uppercase;
+}
+
+.colors-table__check {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #ebebeb;
+  border-right: none;
+  text-align-last: left;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.colors-table__check--title {
+  min-width: 185px;
+}
+
+.colors-table__check-label {
+  padding-left: 4px;
+}
+
+.colors-table__check:first-child {
+  border-left: none;
+}
+
+.colors-table__row {
+  border-bottom: 1px solid #ebebeb;
+}
+
+.colors-table__cell {
+  padding: 14px;
+}
+
+.colors-table__cell--right {
+  text-align: right;
+}
+
+.colors-table__cell--color {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.colors-table__color-box {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  border-radius: 2px;
+}
