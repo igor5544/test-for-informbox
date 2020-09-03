@@ -63,7 +63,9 @@ function loadData() {
   xhr.addEventListener('load', function () {
     if (xhr.status == 200) {
       fillTable(xhr.response.data);
-      hiddenUnactiveColumns();
+      setTimeout(() => {
+        hiddenUnactiveColumns();
+      }, 0);
     } else {
       console.log('Произошла ошибка при загрузке: ', xhr.readyState);
     }
@@ -117,18 +119,18 @@ function createFilterBtns() {
 
   checkboxesElements.forEach((btn, i) => {
     btn.onclick = function () {
-      if (!this.checked) {
-        removeColumn(i);
+      this.removeAttribute('cheked');
 
-        if (isStorageSupport) {
-          sessionStorage.setItem(this.id, this.id);
-        }
+      removeColumn(i);
 
-        Array.prototype.slice.call(colorTableElement.querySelectorAll('.colors-table__check'))[i].remove();
-        createFilterBtns();
-
-        if (!resetBtnElement.classList.contains('colors-table__reset--active')) activeResetBtn();
+      if (isStorageSupport) {
+        sessionStorage.setItem(this.id, this.id);
       }
+
+      Array.prototype.slice.call(colorTableElement.querySelectorAll('.colors-table__check'))[i].remove();
+      createFilterBtns();
+
+      if (!resetBtnElement.classList.contains('colors-table__reset--active')) activeResetBtn();
     };
   });
 }
@@ -148,7 +150,13 @@ function activeResetBtn() {
 }
 
 function removeSettings() {
-  removeSessionSettings()
+  let checkboxesElements = Array.prototype.slice.call(colorTableElement.querySelectorAll('.colors-table__check input'));
+
+  checkboxesElements.forEach(btn => {
+    if (!btn.hasAttribute('checked')) btn.setAttribute('checked');
+  });
+
+  removeSessionSettings();
 
   location.reload();
 }
@@ -156,9 +164,9 @@ function removeSettings() {
 function removeSessionSettings() {
   if (!isStorageSupport) return;
 
-  if (sessionStorage.getItem('id')) sessionStorage.removeItem(storageOffId);
-  if (sessionStorage.getItem('name')) sessionStorage.removeItem(storageOffName);
-  if (sessionStorage.getItem('year')) sessionStorage.removeItem(storageOffYear);
-  if (sessionStorage.getItem('color')) sessionStorage.removeItem(storageOffColor);
-  if (sessionStorage.getItem('pantone')) sessionStorage.removeItem(storageOffPantone);
+  if (sessionStorage.getItem('id')) sessionStorage.removeItem('id');
+  if (sessionStorage.getItem('name')) sessionStorage.removeItem('name');
+  if (sessionStorage.getItem('year')) sessionStorage.removeItem('year');
+  if (sessionStorage.getItem('color')) sessionStorage.removeItem('color');
+  if (sessionStorage.getItem('pantone')) sessionStorage.removeItem('pantone');
 }
