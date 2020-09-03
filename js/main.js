@@ -42,12 +42,6 @@ try {
   isStorageSupport = false;
 }
 
-try {
-  refreshPage = sessionStorage.getItem('refresh');
-} catch (err) {
-  isStorageSupport = false;
-}
-
 loadData();
 
 function hiddenUnactiveColumns() {
